@@ -1,18 +1,27 @@
 # Define the database connection to be used for this model.
-connection: "thelook_ecommerce_hc"
+connection: "thelook_bq"
 
 # include all the views
 include: "/views/**/*.view"
 
+include: "/dashboards/**/*.dashboard"
+
 # Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.
 
-datagroup: hc_case-study_default_datagroup {
+datagroup: hc_playground_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
 
-persist_with: hc_case-study_default_datagroup
+datagroup: datagroup_daily_refresh {
+  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+  sql_trigger:  SELECT count(*) FROM order_items ;;
+  description: "triggered when a new order items added to the order items table"
+  max_cache_age: "24 hours" #Default value 1 hour cache - not needed as data only refreshes overnight
+}
+
+persist_with: hc_playground_default_datagroup
 
 # Explores allow you to join together different views (database tables) based on the
 # relationships between fields. By joining a view into an Explore, you make those
