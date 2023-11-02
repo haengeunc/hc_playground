@@ -1,3 +1,4 @@
+#test
 # The name of this view in Looker is "Distribution Centers"
 view: distribution_centers {
   # The sql_table_name parameter indicates the underlying database table
