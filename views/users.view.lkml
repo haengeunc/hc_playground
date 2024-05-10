@@ -1,3 +1,4 @@
+
 # The name of this view in Looker is "Users"
 view: users {
   # The sql_table_name parameter indicates the underlying database table

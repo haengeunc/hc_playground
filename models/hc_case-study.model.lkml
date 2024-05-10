@@ -1,4 +1,4 @@
-# Define the database connection to be used for this model.
+#test # Define the database connection to be used for this model.
 connection: "thelook_bq"
 
 # include all the views
